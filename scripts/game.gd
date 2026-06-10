@@ -5,27 +5,31 @@ extends Node3D # Or Node2D.
 const PORT = 7000
 const DEFAULT_SERVER_IP = "127.0.0.1" # IPv4 localhost
 const MAX_CONNECTIONS = 20
+const HOST_ID = 1
 
 # This will contain player info for every player,
 # with the keys being each player's unique IDs.
-var players = {}
+var players : Dictionary = {}
 #var player_info = {"name": "Name"}
 
-var players_loaded = 0
+var players_loaded : int = 0
 
-func _ready():
+func _ready() -> void:
 	# Preconfigure game.
 	main_menu.show_connection_info()
+	connect_signals_for_multiplayer()
+	player_loaded.rpc_id(HOST_ID) 
+	main_menu.join_button.pressed.connect(_on_create_client)
+	main_menu.host_button.pressed.connect(_on_create_server)
+	main_menu.start_button.pressed.connect(start_game)
+
+func connect_signals_for_multiplayer() -> void:
 	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_ok)
 	multiplayer.connection_failed.connect(_on_connected_fail)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
-	player_loaded.rpc_id(1) # Tell the server that this peer has loaded.
-	main_menu.join_button.pressed.connect(_on_create_client)
-	main_menu.host_button.pressed.connect(_on_create_server)
-	main_menu.start_button.pressed.connect(start_game)
-	
+
 # Called only on the server.
 func start_game():
 	# All peers are ready to receive RPCs in this scene.
@@ -62,6 +66,7 @@ func _on_create_server():
 	peer.create_server(port, MAX_CONNECTIONS)
 	multiplayer.multiplayer_peer = peer
 	main_menu.show_ready_menu(true)
+	_send_player_data.rpc_id(1, players)
 
 
 func remove_multiplayer_peer():
