@@ -10,11 +10,9 @@ height = 1.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1afgh"]
 albedo_color = Color(0.2213445, 0.08543121, 0, 1)
 
-[node name="Rock" type="Node3D" unique_id=1923815062]
+[node name="Rock" type="StaticBody3D" unique_id=131067862 groups=["Interactable"]]
 
-[node name="RockBody" type="StaticBody3D" parent="." unique_id=1820073980 groups=["Interactable"]]
-
-[node name="RockCollision" type="CollisionShape3D" parent="RockBody" unique_id=296539894]
+[node name="RockCollision" type="CollisionShape3D" parent="." unique_id=296539894]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0075683594, 0)
 shape = SubResource("CylinderShape3D_p2b33")
 

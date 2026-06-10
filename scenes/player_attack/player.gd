@@ -15,7 +15,8 @@ const JUMP_VELOCITY = 4.5
 func _process(_delta: float) -> void:
 	var collider = ray.get_collider()
 	if collider and collider.is_in_group("Interactable"):
-		print("Can interact with ",collider)
+		if Input.is_action_just_pressed("interact"):
+			print("Interacted with ", collider)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
