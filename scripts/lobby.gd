@@ -6,6 +6,7 @@ extends Node
 signal player_connected(peer_id, player_info)
 signal player_disconnected(peer_id)
 signal server_disconnected
+signal new_player
 
 const PORT = 7000
 const DEFAULT_SERVER_IP = "127.0.0.1" # IPv4 localhost
@@ -74,6 +75,7 @@ func player_loaded():
 		if players_loaded == players.size():
 			$/root/Game.start_game()
 			players_loaded = 0
+	new_player.emit()
 
 
 # When a peer connects, send them my player info.
@@ -87,6 +89,7 @@ func _register_player(new_player_info):
 	var new_player_id = multiplayer.get_remote_sender_id()
 	players[new_player_id] = new_player_info
 	player_connected.emit(new_player_id, new_player_info)
+	
 
 
 func _on_player_disconnected(id):
