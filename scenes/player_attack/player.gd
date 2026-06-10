@@ -46,3 +46,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		inner_gimbal.rotate_x(-event.relative.y * mouse_sensitivity)
 		
 		inner_gimbal.rotation.x = clamp(inner_gimbal.rotation.x, min_pitch, max_pitch)
+
+@rpc("authority", "call_local", "reliable")
+func set_initial_position(pos: Vector3) -> void:
+	global_position = pos

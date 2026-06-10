@@ -2,6 +2,7 @@ extends Node3D
 
 const PLAYER_SCENE = preload("res://scenes/player_attack/Player.tscn")
 @onready var players_container = $Players
+@onready var spawn_marker = $SpawnMarker
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,3 +35,6 @@ func spawn_player(id : int) -> void:
 	
 	# Spawner will replicate this player to all clients automatically
 	players_container.add_child(player)
+	
+	# Tell the server and all clients to move the player
+	player.set_initial_position(spawn_marker.global_position)
