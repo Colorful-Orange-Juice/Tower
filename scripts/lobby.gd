@@ -23,15 +23,12 @@ var player_info = {"name": "Name"}
 
 var players_loaded = 0
 
-
-
 func _ready():
 	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_ok)
 	multiplayer.connection_failed.connect(_on_connected_fail)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
-
 
 func join_game(address = ""):
 	if address.is_empty():

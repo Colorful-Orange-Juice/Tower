@@ -10,11 +10,13 @@ const JUMP_VELOCITY = 4.5
 
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var inner_gimbal: Node3D = $CameraPivot/InnerGimbal
-@onready var ray: RayCast3D = $CameraPivot/InnerGimbal/PlayerCam/Ray
+@onready var ray: RayCast3D = $CameraPivot/InnerGimbal/Ray
 
 func _process(_delta: float) -> void:
 	var collider = ray.get_collider()
-	if collider and collider.is_in_group("interactable"):
+	if collider:
+		print(collider)
+	if collider and collider.is_in_group("Interactable"):
 		print("Can interact with ",collider)
 
 func _physics_process(delta: float) -> void:
@@ -38,7 +40,12 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		camera_pivot.rotate_y(-event.relative.x * mouse_sensitivity)
-		
 		inner_gimbal.rotate_x(-event.relative.y * mouse_sensitivity)
 		
 		inner_gimbal.rotation.x = clamp(inner_gimbal.rotation.x, min_pitch, max_pitch)
+		
+		
+		ray.rotate_y(-event.relative.x * mouse_sensitivity)
+		#ray.rotate_x(-event.relative.y * mouse_sensitivity)
+		#ray.rotation.x = clamp(ray.rotation.x, min_pitch, max_pitch)
+		
