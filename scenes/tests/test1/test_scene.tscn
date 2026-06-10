@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ddqwcyh0syeaf"]
+
+[ext_resource type="PackedScene" uid="uid://dmegpc2sm7bq1" path="res://scenes/player/Player.tscn" id="1_k0q5t"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_k0q5t"]
+size = Vector2(20, 20)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_hkqbp"]
+
+[node name="TestScene" type="Node3D" unique_id=213319812]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1304121423]
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor" unique_id=2039743746]
+mesh = SubResource("PlaneMesh_k0q5t")
+
+[node name="FloorCollision" type="CollisionShape3D" parent="Floor" unique_id=1566156355]
+shape = SubResource("WorldBoundaryShape3D_hkqbp")
+
+[node name="Player" parent="." unique_id=1915838503 instance=ExtResource("1_k0q5t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
