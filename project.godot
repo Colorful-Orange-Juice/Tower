@@ -15,6 +15,10 @@ run/main_scene="uid://ddqwcyh0syeaf"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MultiplayerManager="*uid://flyqkxv2a06w"
+
 [input]
 
 move_l={
