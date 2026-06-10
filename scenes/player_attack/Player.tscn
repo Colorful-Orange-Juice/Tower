@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://rv0fj2q8i6je"]
+
+[ext_resource type="Script" uid="uid://qhjththgm38v" path="res://scenes/player_attack/player.gd" id="1_vn6bt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8nba"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o8nba"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr5hl"]
+albedo_color = Color(0.8910589, 0.36511204, 0, 1)
+
+[node name="Player" type="CharacterBody3D" unique_id=1915838503]
+script = ExtResource("1_vn6bt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2015756703]
+shape = SubResource("CapsuleShape3D_o8nba")
+debug_color = Color(0.9452618, 0.4804132, 0, 0.41960785)
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=993766460]
+mesh = SubResource("CapsuleMesh_o8nba")
+surface_material_override/0 = SubResource("StandardMaterial3D_wr5hl")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1505325292]
+
+[node name="InnerGimbal" type="Node3D" parent="CameraPivot" unique_id=220270770]
+
+[node name="PlayerCam" type="Camera3D" parent="CameraPivot/InnerGimbal" unique_id=1789322263]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="Ray" type="RayCast3D" parent="CameraPivot/InnerGimbal/PlayerCam" unique_id=292075456]
+target_position = Vector3(0, 0, -3)
