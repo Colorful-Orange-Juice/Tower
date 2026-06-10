@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://53784ykjj7jm" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_l6cm7"]
+font_color = Color(1, 0.078431375, 0.13725491, 1)
+
 [node name="MainMenu" type="Control" unique_id=701080100]
 layout_mode = 3
 anchors_preset = 15
@@ -86,3 +89,12 @@ offset_left = 5.0
 offset_top = 161.0
 offset_right = 211.0
 offset_bottom = 374.0
+
+[node name="ErrorLabel" type="Label" parent="." unique_id=2048706840]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 131.0
+offset_right = 57.0
+offset_bottom = 154.0
+text = "Error: "
+label_settings = SubResource("LabelSettings_l6cm7")

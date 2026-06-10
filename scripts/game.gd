@@ -33,7 +33,9 @@ func start_game():
 
 func _on_create_client():
 	print("client button pressed")
-	if main_menu.name_text.text == "": return
+	if main_menu.name_text.text == "": 
+		main_menu.display_error("Please enter a name")
+		return
 	# Create client.
 	var peer = ENetMultiplayerPeer.new()
 	var ip : String = DEFAULT_SERVER_IP
@@ -48,7 +50,9 @@ func _on_create_client():
 
 func _on_create_server():
 	print("server button pressed")
-	if main_menu.name_text.text == "": return
+	if main_menu.name_text.text == "": 
+		main_menu.display_error("Please enter a name")
+		return
 	players[1] = {"name": main_menu.name_text.text}
 	# Create server.
 	var peer = ENetMultiplayerPeer.new()
