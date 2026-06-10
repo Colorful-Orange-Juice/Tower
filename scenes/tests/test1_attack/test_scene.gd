@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -29,6 +29,7 @@ func spawn_player(id : int) -> void:
 	
 	player.name = str(id)
 	player.set_multiplayer_authority(id)
+	player.position = spawn_marker.global_position
 	
 	# Spawner will replicate this player to all clients automatically
 	players_container.add_child(player)
@@ -36,4 +37,4 @@ func spawn_player(id : int) -> void:
 	await get_tree().process_frame # Wait a frame before making rpc call
 	
 	# Tell the server and all clients to move the player
-	player.set_initial_position.rpc(spawn_marker.global_position)
+	#player.set_initial_position.rpc(spawn_marker.global_position)
