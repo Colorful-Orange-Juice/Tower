@@ -18,6 +18,10 @@ func _process(_delta: float) -> void:
 		print("Can interact with ",collider)
 
 func _physics_process(delta: float) -> void:
+	# Checks if the instance owns this player
+	if not is_multiplayer_authority():
+		return
+		
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
