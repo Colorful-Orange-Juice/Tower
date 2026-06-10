@@ -6,11 +6,8 @@ const PLAYER_SCENE = preload("res://scenes/player_attack/Player.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	multiplayer.peer_connected.connect(_on_player_connected)
-	
-	# Spawn a player for the server owner
-	if multiplayer.is_server():
-		spawn_player(1);
+	for player in multiplayer.get_peers():
+		spawn_player(player)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
