@@ -6,6 +6,9 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_o8nba"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wr5hl"]
+albedo_color = Color(0.8910589, 0.36511204, 0, 1)
+
 [node name="Player" type="CharacterBody3D" unique_id=1915838503]
 script = ExtResource("1_wr5hl")
 
@@ -15,6 +18,7 @@ debug_color = Color(0.9452618, 0.4804132, 0, 0.41960785)
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="." unique_id=993766460]
 mesh = SubResource("CapsuleMesh_o8nba")
+surface_material_override/0 = SubResource("StandardMaterial3D_wr5hl")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1505325292]
 
