@@ -14,8 +14,6 @@ const JUMP_VELOCITY = 4.5
 
 func _process(_delta: float) -> void:
 	var collider = ray.get_collider()
-	if collider:
-		print(collider)
 	if collider and collider.is_in_group("Interactable"):
 		print("Can interact with ",collider)
 
@@ -43,9 +41,3 @@ func _unhandled_input(event: InputEvent) -> void:
 		inner_gimbal.rotate_x(-event.relative.y * mouse_sensitivity)
 		
 		inner_gimbal.rotation.x = clamp(inner_gimbal.rotation.x, min_pitch, max_pitch)
-		
-		
-		ray.rotate_y(-event.relative.x * mouse_sensitivity)
-		#ray.rotate_x(-event.relative.y * mouse_sensitivity)
-		#ray.rotation.x = clamp(ray.rotation.x, min_pitch, max_pitch)
-		

@@ -25,9 +25,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wr5hl")
 [node name="InnerGimbal" type="Node3D" parent="CameraPivot" unique_id=220270770]
 
 [node name="Ray" type="RayCast3D" parent="CameraPivot/InnerGimbal" unique_id=292075456]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
-rotation_edit_mode = 2
-target_position = Vector3(0, 0, -3)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.3, 0)
+target_position = Vector3(0, 0, 3)
+debug_shape_custom_color = Color(0.9463888, 0, 0.35140803, 1)
 debug_shape_thickness = 5
 
 [node name="PlayerCam" type="Camera3D" parent="CameraPivot/InnerGimbal" unique_id=1789322263]
