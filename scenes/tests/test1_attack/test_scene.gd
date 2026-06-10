@@ -28,13 +28,7 @@ func spawn_player(id : int) -> void:
 	var player = PLAYER_SCENE.instantiate()
 	
 	player.name = str(id)
-	player.set_multiplayer_authority(id)
 	player.position = spawn_marker.global_position
 	
 	# Spawner will replicate this player to all clients automatically
 	players_container.add_child(player)
-	
-	await get_tree().process_frame # Wait a frame before making rpc call
-	
-	# Tell the server and all clients to move the player
-	#player.set_initial_position.rpc(spawn_marker.global_position)

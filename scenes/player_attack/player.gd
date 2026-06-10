@@ -50,3 +50,8 @@ func _unhandled_input(event: InputEvent) -> void:
 @rpc("authority", "call_local", "reliable")
 func set_initial_position(pos: Vector3) -> void:
 	global_position = pos
+
+
+func _enter_tree() -> void:
+	print("Player " + name + " entering scene!")
+	set_multiplayer_authority(name.to_int())
