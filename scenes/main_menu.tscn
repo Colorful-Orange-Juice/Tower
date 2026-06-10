@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://q43bi6vieb4h"]
+
+[ext_resource type="Script" uid="uid://53784ykjj7jm" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control" unique_id=701080100]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6cm7")
+
+[node name="Label" type="Label" parent="." unique_id=933395360]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 25.0
+text = "IP:"
+
+[node name="Label2" type="Label" parent="." unique_id=859367229]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 23.0
+offset_right = 42.0
+offset_bottom = 46.0
+text = "Port:"
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=1522810949]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 8.0
+offset_right = 173.0
+offset_bottom = 26.0
+
+[node name="TextEdit2" type="TextEdit" parent="." unique_id=1173974659]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 29.0
+offset_right = 115.0
+offset_bottom = 47.0
+
+[node name="Button" type="Button" parent="." unique_id=1591986337]
+layout_mode = 0
+offset_left = 123.0
+offset_top = 60.0
+offset_right = 210.0
+offset_bottom = 91.0
+text = "Join Game"
+
+[node name="Button2" type="Button" parent="." unique_id=1623003043]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 60.0
+offset_right = 105.0
+offset_bottom = 91.0
+text = "Host Game"
