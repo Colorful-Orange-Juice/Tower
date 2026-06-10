@@ -11,6 +11,16 @@ const JUMP_VELOCITY = 4.5
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var inner_gimbal: Node3D = $CameraPivot/InnerGimbal
 @onready var ray: RayCast3D = $CameraPivot/InnerGimbal/Ray
+@onready var camera: Camera3D = $CameraPivot/InnerGimbal/PlayerCam
+
+func _ready() -> void:
+	camera.current = is_multiplayer_authority()
+
+
+func _enter_tree() -> void:
+	print("Player " + name + " entering scene!")
+	set_multiplayer_authority(name.to_int())
+
 
 func _process(_delta: float) -> void:
 	var collider = ray.get_collider()
@@ -50,8 +60,3 @@ func _unhandled_input(event: InputEvent) -> void:
 @rpc("authority", "call_local", "reliable")
 func set_initial_position(pos: Vector3) -> void:
 	global_position = pos
-
-
-func _enter_tree() -> void:
-	print("Player " + name + " entering scene!")
-	set_multiplayer_authority(name.to_int())

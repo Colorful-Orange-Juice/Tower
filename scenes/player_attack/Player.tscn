@@ -16,9 +16,6 @@ properties/0/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D" unique_id=1915838503]
 script = ExtResource("1_vn6bt")
-mouse_sensitivity = null
-max_pitch = null
-min_pitch = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2015756703]
 shape = SubResource("CapsuleShape3D_o8nba")
