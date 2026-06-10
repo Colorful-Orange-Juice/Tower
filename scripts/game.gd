@@ -95,7 +95,7 @@ func _register_player(new_player_info):
 func _send_player_data(player_list):
 	main_menu.connected_players.clear()
 	for id in player_list:
-		main_menu.connected_players.add("%s: %s" % [id, player_list[id]["name"]], null, false)
+		main_menu.connected_players.add_item("%s: %s" % [id, player_list[id]["name"]], null, false)
 
 
 func _on_player_disconnected(id):
