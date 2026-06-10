@@ -28,7 +28,7 @@ func _ready():
 # Called only on the server.
 func start_game():
 	# All peers are ready to receive RPCs in this scene.
-	load_game.rpc("res://scenes/tests/test1/test_scene.tscn")
+	load_game.rpc("res://scenes/tests/test1_attack/test_scene.tscn")
 
 func _on_create_client():
 	print("client button pressed")
