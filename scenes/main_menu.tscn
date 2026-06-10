@@ -27,12 +27,27 @@ offset_right = 42.0
 offset_bottom = 46.0
 text = "Port:"
 
+[node name="Label3" type="Label" parent="." unique_id=258859634]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 54.0
+offset_right = 44.0
+offset_bottom = 77.0
+text = "Name:"
+
 [node name="TextEdit" type="TextEdit" parent="." unique_id=1522810949]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 8.0
 offset_right = 173.0
 offset_bottom = 26.0
+
+[node name="TextEdit3" type="TextEdit" parent="." unique_id=1287534029]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 58.0
+offset_right = 177.0
+offset_bottom = 76.0
 
 [node name="TextEdit2" type="TextEdit" parent="." unique_id=1173974659]
 layout_mode = 0
@@ -43,16 +58,31 @@ offset_bottom = 47.0
 
 [node name="Button" type="Button" parent="." unique_id=1591986337]
 layout_mode = 0
-offset_left = 123.0
-offset_top = 60.0
-offset_right = 210.0
-offset_bottom = 91.0
+offset_left = 125.0
+offset_top = 93.0
+offset_right = 212.0
+offset_bottom = 124.0
 text = "Join Game"
 
 [node name="Button2" type="Button" parent="." unique_id=1623003043]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 60.0
-offset_right = 105.0
-offset_bottom = 91.0
+offset_left = 13.0
+offset_top = 93.0
+offset_right = 107.0
+offset_bottom = 124.0
 text = "Host Game"
+
+[node name="Button3" type="Button" parent="." unique_id=1490811529]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 387.0
+offset_right = 145.0
+offset_bottom = 418.0
+text = "Start Game"
+
+[node name="ItemList" type="ItemList" parent="." unique_id=436273850]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 161.0
+offset_right = 211.0
+offset_bottom = 374.0
