@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ddqwcyh0syeaf"]
 
-[ext_resource type="PackedScene" uid="uid://dmegpc2sm7bq1" path="res://scenes/player/Player.tscn" id="1_k0q5t"]
+[ext_resource type="PackedScene" uid="uid://dig8bi2oe12m0" path="res://scenes/rock/Rock.tscn" id="2_ro6nk"]
+[ext_resource type="PackedScene" uid="uid://rv0fj2q8i6je" path="res://scenes/player_attack/Player.tscn" id="2_y4jwn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k0q5t"]
 size = Vector2(20, 20)
@@ -20,9 +21,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_k0q5t")
 [node name="FloorCollision" type="CollisionShape3D" parent="Floor" unique_id=1566156355]
 shape = SubResource("WorldBoundaryShape3D_hkqbp")
 
-[node name="Player" parent="." unique_id=1915838503 instance=ExtResource("1_k0q5t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1206807544]
 transform = Transform3D(1, 0, 0, 0, 0.85512006, 0.51843005, 0, -0.51843005, 0.85512006, 0.682436, 11.404813, 15.411849)
 shadow_enabled = true
+
+[node name="Rock" parent="." unique_id=1923815062 instance=ExtResource("2_ro6nk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2455616, 0.5, 4.3929315)
+
+[node name="Player" parent="." unique_id=1915838503 instance=ExtResource("2_y4jwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7736158, 0)
