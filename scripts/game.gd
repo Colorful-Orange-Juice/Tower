@@ -1,6 +1,6 @@
 extends Node3D # Or Node2D.
 
-@onready var main_menu: Control = $MainMenu
+@onready var main_menu: MainMenu = $MainMenu
 
 const PORT = 7000
 const DEFAULT_SERVER_IP = "127.0.0.1" # IPv4 localhost
@@ -15,6 +15,7 @@ var players_loaded = 0
 
 func _ready():
 	# Preconfigure game.
+	main_menu.show_connection_info()
 	multiplayer.peer_connected.connect(_on_player_connected)
 	multiplayer.peer_disconnected.connect(_on_player_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_ok)
@@ -24,7 +25,7 @@ func _ready():
 	main_menu.join_button.pressed.connect(_on_create_client)
 	main_menu.host_button.pressed.connect(_on_create_server)
 	main_menu.start_button.pressed.connect(start_game)
-
+	
 # Called only on the server.
 func start_game():
 	# All peers are ready to receive RPCs in this scene.
@@ -43,6 +44,7 @@ func _on_create_client():
 		port = int(main_menu.port_text.text)
 	peer.create_client(ip, port)
 	multiplayer.multiplayer_peer = peer
+	main_menu.show_ready_menu()
 
 func _on_create_server():
 	print("server button pressed")
@@ -55,6 +57,7 @@ func _on_create_server():
 		port = int(main_menu.text_edit_2.text)
 	peer.create_server(port, MAX_CONNECTIONS)
 	multiplayer.multiplayer_peer = peer
+	main_menu.show_ready_menu(true)
 
 
 func remove_multiplayer_peer():

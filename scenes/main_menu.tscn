@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
 
-[node name="Label" type="Label" parent="." unique_id=933395360]
+[node name="IPLabel" type="Label" parent="." unique_id=933395360]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
@@ -19,7 +19,7 @@ offset_right = 42.0
 offset_bottom = 25.0
 text = "IP:"
 
-[node name="Label2" type="Label" parent="." unique_id=859367229]
+[node name="PortLabel" type="Label" parent="." unique_id=859367229]
 layout_mode = 0
 offset_left = 2.0
 offset_top = 23.0
@@ -27,7 +27,7 @@ offset_right = 42.0
 offset_bottom = 46.0
 text = "Port:"
 
-[node name="Label3" type="Label" parent="." unique_id=258859634]
+[node name="NameLabel" type="Label" parent="." unique_id=258859634]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 54.0
