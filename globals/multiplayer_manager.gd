@@ -37,11 +37,9 @@ func create_server(port, host_data):
 	players[1] = host_data
 	players_updated.emit(players)
 
-
 func remove_multiplayer_peer():
 	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	players.clear()
-	if multiplayer.is_server(): players_updated.emit(players)
 
 
 # When the server decides to start the game from a UI scene,
@@ -49,7 +47,7 @@ func remove_multiplayer_peer():
 @rpc("call_local", "reliable")
 func load_game(game_scene_path):
 	get_tree().change_scene_to_file(game_scene_path)
-
+	multiplayer.multiplayer_peer.refuse_new_connections = true # prevent new players from joining
 
 # Every peer will call this when they have loaded the game scene.
 @rpc("any_peer", "call_local", "reliable")
@@ -60,13 +58,6 @@ func player_loaded():
 			$/root/Game.start_game()
 			players_loaded = 0"
 
-
-# When a peer connects, send them my player info.
-# This allows transfer of all desired data for each player, not only the unique ID.
-func _on_player_connected(id, player_data):
-	_register_player.rpc_id(id, player_data)
-
-
 @rpc("any_peer", "reliable")
 func _register_player(new_player_data):
 	var new_player_id = multiplayer.get_remote_sender_id()
@@ -74,19 +65,23 @@ func _register_player(new_player_data):
 	if multiplayer.is_server(): players_updated.emit(players)
 
 
+# When a peer connects, send them my player info.
+# This allows transfer of all desired data for each player, not only the unique ID.
+func _on_player_connected(id, player_data):
+	_register_player.rpc_id(id, player_data)
+
 func _on_player_disconnected(id):
 	players.erase(id)
-
+	print("Player with id %d disconnected" % id)
 
 func _on_connected_ok():
 	var peer_id = multiplayer.get_unique_id()
 	print("your id is ", peer_id)
 
-
 func _on_connected_fail():
 	remove_multiplayer_peer()
 
-
 func _on_server_disconnected():
 	remove_multiplayer_peer()
-	players.clear()
+	print("Connection to the server was lost")
+	get_tree().change_scene_to_file("res://scenes/game.tscn")

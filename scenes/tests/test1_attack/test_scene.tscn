@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dig8bi2oe12m0" path="res://scenes/rock/Rock.tscn" id="1_gq5ee"]
 [ext_resource type="Script" uid="uid://1vn8t64jtmcc" path="res://scenes/tests/test1_attack/test_scene.gd" id="1_hv7wa"]
+[ext_resource type="PackedScene" uid="uid://7ub8f0cax06c" path="res://scenes/enemy/Enemy.tscn" id="3_hv7wa"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_k0q5t"]
 size = Vector2(20, 20)
@@ -37,3 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=2025592590]
 _spawnable_scenes = PackedStringArray("uid://rv0fj2q8i6je")
 spawn_path = NodePath("../Players")
+
+[node name="Enemy" parent="." unique_id=131067862 instance=ExtResource("3_hv7wa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6715641, 0.41825104, -3.1586561)

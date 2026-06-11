@@ -26,9 +26,15 @@ func _process(_delta: float) -> void:
 ##
 func spawn_player(id : int) -> void:
 	var player = PLAYER_SCENE.instantiate()
+	player.player_death.connect(_on_player_death)
 	
 	player.name = str(id)
 	player.position = spawn_marker.global_position
 	
 	# Spawner will replicate this player to all clients automatically
 	players_container.add_child(player)
+
+func _on_player_death(id) -> void:
+	for child in players_container.get_children():
+		if child.name == id:
+			child.position = spawn_marker.global_position

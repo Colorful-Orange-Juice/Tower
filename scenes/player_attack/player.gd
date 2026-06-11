@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 
@@ -13,7 +14,14 @@ const JUMP_VELOCITY = 4.5
 @onready var ray: RayCast3D = $CameraPivot/InnerGimbal/Ray
 @onready var camera: Camera3D = $CameraPivot/InnerGimbal/PlayerCam
 
+var health : float = 100.0
+
+signal damage_taken(damage_amount)
+signal player_death(id)
+
 func _ready() -> void:
+	damage_taken.connect(_on_damage_taken)
+	player_death.connect(_on_player_death)
 	camera.current = is_multiplayer_authority()
 
 
@@ -60,3 +68,12 @@ func _unhandled_input(event: InputEvent) -> void:
 @rpc("authority", "call_local", "reliable")
 func set_initial_position(pos: Vector3) -> void:
 	global_position = pos
+
+func _on_damage_taken(damage_amt : float) -> void:
+	health -= damage_amt
+	if health <= 0:
+		health = 0
+		player_death.emit(name)
+
+func _on_player_death(id) -> void:
+	print("Player " + id + " died")
